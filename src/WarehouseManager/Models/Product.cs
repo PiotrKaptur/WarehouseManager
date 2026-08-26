@@ -17,3 +17,4 @@ class Product
         return Price * Quantity;
     }
 }
+
