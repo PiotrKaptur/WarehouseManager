@@ -17,4 +17,19 @@ class WarehouseService
     {
         return Products.FirstOrDefault(p => p.Name == name);
     }
+
+    public bool RemoveProduct(string name)
+    {
+        Product? foundProduct = FindProductByName(name);
+
+        if(foundProduct != null)
+        {
+            Products.Remove(foundProduct);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

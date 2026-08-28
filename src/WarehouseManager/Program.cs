@@ -16,5 +16,24 @@ class Project
         {
             Console.WriteLine($"{item.Name} - {item.Price} zł - ilość: {item.Quantity}");
         }
+
+        Product? foundProduct = warehouseService.FindProductByName("Telewizor");
+
+        if(foundProduct != null)
+        {
+            Console.WriteLine(foundProduct.Name);
+        }
+        else
+        {
+            Console.WriteLine("Nie znaleziono produktu");
+        }
+
+        bool result = warehouseService.RemoveProduct("Odkurzacz");
+        Console.WriteLine(result);
+        
+         foreach(Product item in warehouseService.Products)
+        {
+            Console.WriteLine($"{item.Name} - {item.Price} zł - ilość: {item.Quantity}");
+        }
     }
 }
