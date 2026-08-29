@@ -48,7 +48,7 @@ class WarehouseService
         }
     }
 
-     public  bool ReduceQuantity(int id, int amount)
+    public  bool ReduceQuantity(int id, int amount)
     {
         Product? foundProduct = Products.FirstOrDefault(p => p.Id == id);
        
@@ -72,5 +72,10 @@ class WarehouseService
     public List<Product> AccessibleProducts()
     {
         return Products.Where(p => p.Quantity > 0).ToList();
+    }
+
+    public List<Product> SearchByCategory(ProductCategory category)
+    {
+        return Products.Where(p => p.Category == category).ToList();
     }
 }

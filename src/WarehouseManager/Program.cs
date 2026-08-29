@@ -4,7 +4,7 @@ class Project
     static void Main()
     {
         WarehouseService warehouseService = new WarehouseService();
-        Product product = new Product(1, "Wiertarka", 500, 0, ProductCategory.NarzędziaElektryczneIAkumulatorowe );
+        Product product = new Product(1, "Wiertarka", 500, 0, ProductCategory.NarzędziaPomiaroweIKontrolne);
         warehouseService.AddProduct(product);
         Product product1 = new Product(2, "Wkrętarka", 700, 2, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
         warehouseService.AddProduct(product1);
@@ -85,6 +85,13 @@ class Project
         foreach(Product product3 in accessibleProducts)
         {
             Console.WriteLine($"{product3.Id}. - {product3.Name} - {product3.Price} zł - ilość: {product3.Quantity} - kategoria: {product3.Category}");
+        }
+
+        Console.WriteLine("Test1");
+        List<Product> searchByCategory = warehouseService.SearchByCategory(ProductCategory.NarzędziaElektryczneIAkumulatorowe);
+        foreach(Product product4 in searchByCategory)
+        {
+            Console.WriteLine($"{product4.Id}. - {product4.Name} - {product4.Price} zł - ilość: {product4.Quantity} - kategoria: {product4.Category}");
         }
     }
 }
