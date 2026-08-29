@@ -51,5 +51,31 @@ class Project
         {
              Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
         }
+
+
+
+        bool effect1 = warehouseService.ReduceQuantity(2, 1);
+        Console.WriteLine(effect1);
+
+          foreach(Product item in warehouseService.Products)
+        {
+             Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
+        }
+
+        bool effect2 = warehouseService.ReduceQuantity(2, 35);
+        Console.WriteLine(effect2);
+
+          foreach(Product item in warehouseService.Products)
+        {
+             Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
+        }
+
+        bool effect3 = warehouseService.ReduceQuantity(4, 5);
+        Console.WriteLine(effect3);
+
+          foreach(Product item in warehouseService.Products)
+        {
+             Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
+        }
     }
 }

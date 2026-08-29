@@ -46,6 +46,26 @@ class WarehouseService
             Console.WriteLine("Nie znaleziono produktu");
             return false;
         }
+    }
 
+     public  bool ReduceQuantity(int id, int amount)
+    {
+        Product? foundProduct = Products.FirstOrDefault(p => p.Id == id);
+       
+       if(foundProduct != null && foundProduct.Quantity >= amount)
+        {
+            foundProduct.Quantity = foundProduct.Quantity - amount;
+            return true;
+        }
+        else if(foundProduct == null)
+        {
+            Console.WriteLine("Nie znaleziono produktu");
+            return false;
+        }
+        else
+        {
+            Console.WriteLine("Niewystarczajaca ilość produktu");
+            return false;
+        }
     }
 }
