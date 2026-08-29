@@ -32,4 +32,20 @@ class WarehouseService
             return false;
         }
     }
+    public  bool IncreaseQuantity(int id, int amount)
+    {
+        Product? foundProduct = Products.FirstOrDefault(p => p.Id == id);
+       
+       if(foundProduct != null)
+        {
+            foundProduct.Quantity = foundProduct.Quantity + amount;
+            return true;
+        }
+        else
+        {
+            Console.WriteLine("Nie znaleziono produktu");
+            return false;
+        }
+
+    }
 }

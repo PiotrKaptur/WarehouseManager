@@ -17,6 +17,8 @@ class Project
             Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
         }
 
+
+
         Product? foundProduct = warehouseService.FindProductByName("Telewizor");
 
         if(foundProduct != null)
@@ -28,10 +30,24 @@ class Project
             Console.WriteLine("Nie znaleziono produktu");
         }
 
+
+
         bool result = warehouseService.RemoveProduct("Odkurzacz");
         Console.WriteLine(result);
 
+
+
          foreach(Product item in warehouseService.Products)
+        {
+             Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
+        }
+
+
+        bool effect = warehouseService.IncreaseQuantity(3, 10);
+        Console.WriteLine(effect);
+
+
+           foreach(Product item in warehouseService.Products)
         {
              Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
         }
