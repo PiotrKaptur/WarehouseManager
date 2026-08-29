@@ -4,7 +4,7 @@ class Project
     static void Main()
     {
         WarehouseService warehouseService = new WarehouseService();
-        Product product = new Product(1, "Wiertarka", 500, 3, ProductCategory.NarzędziaElektryczneIAkumulatorowe );
+        Product product = new Product(1, "Wiertarka", 500, 0, ProductCategory.NarzędziaElektryczneIAkumulatorowe );
         warehouseService.AddProduct(product);
         Product product1 = new Product(2, "Wkrętarka", 700, 2, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
         warehouseService.AddProduct(product1);
@@ -37,7 +37,7 @@ class Project
 
 
 
-         foreach(Product item in warehouseService.Products)
+        foreach(Product item in warehouseService.Products)
         {
              Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
         }
@@ -47,7 +47,7 @@ class Project
         Console.WriteLine(effect);
 
 
-           foreach(Product item in warehouseService.Products)
+        foreach(Product item in warehouseService.Products)
         {
              Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
         }
@@ -57,7 +57,7 @@ class Project
         bool effect1 = warehouseService.ReduceQuantity(2, 1);
         Console.WriteLine(effect1);
 
-          foreach(Product item in warehouseService.Products)
+        foreach(Product item in warehouseService.Products)
         {
              Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
         }
@@ -65,7 +65,7 @@ class Project
         bool effect2 = warehouseService.ReduceQuantity(2, 35);
         Console.WriteLine(effect2);
 
-          foreach(Product item in warehouseService.Products)
+        foreach(Product item in warehouseService.Products)
         {
              Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
         }
@@ -73,9 +73,18 @@ class Project
         bool effect3 = warehouseService.ReduceQuantity(4, 5);
         Console.WriteLine(effect3);
 
-          foreach(Product item in warehouseService.Products)
+        foreach(Product item in warehouseService.Products)
         {
              Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
+        }
+
+
+
+        Console.WriteLine("Test");
+        List<Product> accessibleProducts = warehouseService.AccessibleProducts();
+        foreach(Product product3 in accessibleProducts)
+        {
+            Console.WriteLine($"{product3.Id}. - {product3.Name} - {product3.Price} zł - ilość: {product3.Quantity} - kategoria: {product3.Category}");
         }
     }
 }

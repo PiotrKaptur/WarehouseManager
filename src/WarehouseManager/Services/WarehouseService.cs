@@ -68,4 +68,9 @@ class WarehouseService
             return false;
         }
     }
+
+    public List<Product> AccessibleProducts()
+    {
+        return Products.Where(p => p.Quantity > 0).ToList();
+    }
 }
