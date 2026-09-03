@@ -93,5 +93,13 @@ class Project
         {
             Console.WriteLine($"{product4.Id}. - {product4.Name} - {product4.Price} zł - ilość: {product4.Quantity} - kategoria: {product4.Category}");
         }
+
+
+        Console.WriteLine("Test2");
+        List<Product> lowStockProducts = warehouseService.LowStockProducts(5);
+        foreach(Product product5 in lowStockProducts)
+        {
+            Console.WriteLine($"{product5.Id}. - {product5.Name} - {product5.Price} zł - ilość: {product5.Quantity} - kategoria: {product5.Category}");
+        }
     }
 }

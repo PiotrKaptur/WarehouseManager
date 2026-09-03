@@ -78,4 +78,9 @@ class WarehouseService
     {
         return Products.Where(p => p.Category == category).ToList();
     }
+
+    public List<Product> LowStockProducts(int threshold)
+    {
+        return Products.Where(p => p.Quantity <= threshold).ToList();
+    }
 }
