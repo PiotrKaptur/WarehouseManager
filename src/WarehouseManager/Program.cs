@@ -4,9 +4,9 @@ class Project
     static void Main()
     {
         WarehouseService warehouseService = new WarehouseService();
-        Product product = new Product(1, "Wiertarka", 500, 0, ProductCategory.NarzędziaPomiaroweIKontrolne);
+        Product product = new Product(1, "Wkrętarka", 500, 0, ProductCategory.NarzędziaPomiaroweIKontrolne);
         warehouseService.AddProduct(product);
-        Product product1 = new Product(2, "Wkrętarka", 700, 2, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
+        Product product1 = new Product(2, "Wiertarka", 700, 2, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
         warehouseService.AddProduct(product1);
         Product product2 = new Product(3, "Odkurzacz", 640, 5, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
         warehouseService.AddProduct(product2);
@@ -100,6 +100,13 @@ class Project
         foreach(Product product5 in lowStockProducts)
         {
             Console.WriteLine($"{product5.Id}. - {product5.Name} - {product5.Price} zł - ilość: {product5.Quantity} - kategoria: {product5.Category}");
+        }
+
+        Console.WriteLine("Test3");
+        List<Product> alphabeticalSorting = warehouseService.AlphabeticalSorting();
+        foreach(Product product6 in alphabeticalSorting)
+        {
+            Console.WriteLine($"{product6.Id}. - {product6.Name} - {product6.Price} zł - ilość: {product6.Quantity} - kategoria: {product6.Category}");
         }
     }
 }

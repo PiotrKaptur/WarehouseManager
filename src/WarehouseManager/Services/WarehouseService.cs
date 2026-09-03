@@ -83,4 +83,9 @@ class WarehouseService
     {
         return Products.Where(p => p.Quantity <= threshold).ToList();
     }
+
+    public  List<Product> AlphabeticalSorting()
+    {
+        return Products.OrderBy(p => p.Name).ToList();
+    }
 }
