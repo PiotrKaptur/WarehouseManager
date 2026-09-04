@@ -108,5 +108,12 @@ class Project
         {
             Console.WriteLine($"{product6.Id}. - {product6.Name} - {product6.Price} zł - ilość: {product6.Quantity} - kategoria: {product6.Category}");
         }
+
+        Console.WriteLine("Test4");
+        List<Product> sortingByPrice = warehouseService.SortingByPrice();
+        foreach(Product product7 in sortingByPrice)
+        {
+            Console.WriteLine($"{product7.Id}. - {product7.Name} - {product7.Price} zł - ilość: {product7.Quantity} - kategoria: {product7.Category}");
+        }
     }
 }
