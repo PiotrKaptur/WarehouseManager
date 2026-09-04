@@ -1,6 +1,15 @@
 ﻿
 class Project
 {
+
+
+    public static void ProductDisplay(List<Product> products)
+    {
+        foreach(Product item in products)
+        {
+             Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
+        }
+    }
     static void Main()
     {
         WarehouseService warehouseService = new WarehouseService();
@@ -10,17 +19,12 @@ class Project
         warehouseService.AddProduct(product1);
         Product product2 = new Product(3, "Odkurzacz", 640, 5, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
         warehouseService.AddProduct(product2);
+        
+        ProductDisplay(warehouseService.Products);
 
 
-        foreach(Product item in warehouseService.Products)
-        {
-            Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
-        }
-
-
-
+        Console.WriteLine("Test FindProductByName");
         Product? foundProduct = warehouseService.FindProductByName("Telewizor");
-
         if(foundProduct != null)
         {
             Console.WriteLine(foundProduct.Name);
@@ -31,89 +35,58 @@ class Project
         }
 
 
-
+        Console.WriteLine("Test RemoveProduct");
         bool result = warehouseService.RemoveProduct("Odkurzacz");
         Console.WriteLine(result);
+        ProductDisplay(warehouseService.Products);
 
 
-
-        foreach(Product item in warehouseService.Products)
-        {
-             Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
-        }
-
-
-        bool effect = warehouseService.IncreaseQuantity(3, 10);
+        Console.WriteLine("Test IncreaseQuantity");
+        bool effect = warehouseService.IncreaseQuantity(2, 10);
         Console.WriteLine(effect);
+        ProductDisplay(warehouseService.Products);
 
 
-        foreach(Product item in warehouseService.Products)
-        {
-             Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
-        }
-
-
-
+        Console.WriteLine("Test ReduceQuantity");
         bool effect1 = warehouseService.ReduceQuantity(2, 1);
         Console.WriteLine(effect1);
+        ProductDisplay(warehouseService.Products);
 
-        foreach(Product item in warehouseService.Products)
-        {
-             Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
-        }
 
-        bool effect2 = warehouseService.ReduceQuantity(2, 35);
+        Console.WriteLine("Test ReduceQuantity too many");
+        bool effect2 = warehouseService.ReduceQuantity(2, 100);
         Console.WriteLine(effect2);
+        ProductDisplay(warehouseService.Products);
 
-        foreach(Product item in warehouseService.Products)
-        {
-             Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
-        }
 
-        bool effect3 = warehouseService.ReduceQuantity(4, 5);
+        Console.WriteLine("Test ReduceQuantity non-existent");
+        bool effect3 = warehouseService.ReduceQuantity(5, 1);
         Console.WriteLine(effect3);
-
-        foreach(Product item in warehouseService.Products)
-        {
-             Console.WriteLine($"{item.Id}. - {item.Name} - {item.Price} zł - ilość: {item.Quantity} - kategoria: {item.Category}");
-        }
+        ProductDisplay(warehouseService.Products);
 
 
-
-        Console.WriteLine("Test");
+        Console.WriteLine("Test AccessibleProducts");
         List<Product> accessibleProducts = warehouseService.AccessibleProducts();
-        foreach(Product product3 in accessibleProducts)
-        {
-            Console.WriteLine($"{product3.Id}. - {product3.Name} - {product3.Price} zł - ilość: {product3.Quantity} - kategoria: {product3.Category}");
-        }
+        ProductDisplay(accessibleProducts);
 
-        Console.WriteLine("Test1");
+
+        Console.WriteLine("Test SearchByCategory");
         List<Product> searchByCategory = warehouseService.SearchByCategory(ProductCategory.NarzędziaElektryczneIAkumulatorowe);
-        foreach(Product product4 in searchByCategory)
-        {
-            Console.WriteLine($"{product4.Id}. - {product4.Name} - {product4.Price} zł - ilość: {product4.Quantity} - kategoria: {product4.Category}");
-        }
+        ProductDisplay(searchByCategory);
 
 
-        Console.WriteLine("Test2");
+        Console.WriteLine("Test LowStockProducts");
         List<Product> lowStockProducts = warehouseService.LowStockProducts(5);
-        foreach(Product product5 in lowStockProducts)
-        {
-            Console.WriteLine($"{product5.Id}. - {product5.Name} - {product5.Price} zł - ilość: {product5.Quantity} - kategoria: {product5.Category}");
-        }
+        ProductDisplay(lowStockProducts);
 
-        Console.WriteLine("Test3");
+
+        Console.WriteLine("Test AlphabeticalSorting");
         List<Product> alphabeticalSorting = warehouseService.AlphabeticalSorting();
-        foreach(Product product6 in alphabeticalSorting)
-        {
-            Console.WriteLine($"{product6.Id}. - {product6.Name} - {product6.Price} zł - ilość: {product6.Quantity} - kategoria: {product6.Category}");
-        }
+        ProductDisplay(alphabeticalSorting);
+        
 
-        Console.WriteLine("Test4");
+        Console.WriteLine("Test SortingByPrice");
         List<Product> sortingByPrice = warehouseService.SortingByPrice();
-        foreach(Product product7 in sortingByPrice)
-        {
-            Console.WriteLine($"{product7.Id}. - {product7.Name} - {product7.Price} zł - ilość: {product7.Quantity} - kategoria: {product7.Category}");
-        }
+        ProductDisplay(sortingByPrice);
     }
 }
