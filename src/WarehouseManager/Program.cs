@@ -98,5 +98,10 @@ class Project
         Console.WriteLine("Test GetTotalQuantity");
         int result1 = warehouseService.GetTotalQuantity();
         Console.WriteLine($"Get Total Quantity: {result1}");
+
+
+        Console.WriteLine("Test GetTotalWarehouseValue");
+        decimal result2 = warehouseService.GetTotalWarehouseValue();
+        Console.WriteLine($"Get total warehouse value : {result2}");
     }
 }

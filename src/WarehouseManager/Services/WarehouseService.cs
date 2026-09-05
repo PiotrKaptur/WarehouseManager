@@ -103,4 +103,10 @@ class WarehouseService
     {
         return Products.Sum(p => p.Quantity);
     }
+
+
+    public decimal GetTotalWarehouseValue()
+    {
+        return Products.Sum(p => p.Price * p.Quantity);
+    }
 }
