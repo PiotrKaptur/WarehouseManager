@@ -13,13 +13,13 @@ class Project
     static void Main()
     {
         WarehouseService warehouseService = new WarehouseService();
-        Product product = new Product(1, "Wkrętarka", 500, 0, ProductCategory.NarzędziaPomiaroweIKontrolne);
+        Product product = new Product(1, "Wkrętarka", 500, 34, ProductCategory.NarzędziaPomiaroweIKontrolne);
         warehouseService.AddProduct(product);
         Product product1 = new Product(2, "Wiertarka", 700, 2, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
         warehouseService.AddProduct(product1);
         Product product2 = new Product(3, "Odkurzacz", 640, 5, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
         warehouseService.AddProduct(product2);
-        
+
         ProductDisplay(warehouseService.Products);
 
 
@@ -88,5 +88,10 @@ class Project
         Console.WriteLine("Test SortingByPrice");
         List<Product> sortingByPrice = warehouseService.SortingByPrice();
         ProductDisplay(sortingByPrice);
+
+
+        Console.WriteLine("Test SortingByQuantity");
+        List<Product> sortingByQuantity = warehouseService.SortingByQuantity();
+        ProductDisplay(sortingByQuantity);
     }
 }

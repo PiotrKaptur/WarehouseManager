@@ -93,4 +93,9 @@ class WarehouseService
     {
         return Products.OrderBy(p => p.Price).ToList();
     }
+
+    public List<Product> SortingByQuantity()
+    {
+        return Products.OrderBy(p => p.Quantity).ToList();
+    }
 }
