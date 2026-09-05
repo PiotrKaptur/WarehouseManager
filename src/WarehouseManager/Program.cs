@@ -15,7 +15,7 @@ class Project
         warehouseService.AddProduct(product);
         Product product1 = new Product(2, "Wiertarka", 700, 2, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
         warehouseService.AddProduct(product1);
-        Product product2 = new Product(3, "Odkurzacz", 640, 5, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
+        Product product2 = new Product(3, "Odkurzacz", 650, 5, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
         warehouseService.AddProduct(product2);
 
         ProductDisplay(warehouseService.Products);
@@ -111,6 +111,17 @@ class Project
         else
         {
             Console.WriteLine($"{result3.Id}. - {result3.Name} - {result3.Price} zł - ilość: {result3.Quantity} - kategoria: {result3.Category}");
+        }
+
+        Console.WriteLine("Test GetProductWithHighestQuantity");
+        var result4 = warehouseService.GetProductWithHighestQuantity();
+        if(result4 == null)
+        {
+            Console.WriteLine("No products");
+        }
+        else
+        {
+            Console.WriteLine($"{result4.Id}. - {result4.Name} - {result4.Price} zł - ilość: {result4.Quantity} - kategoria: {result4.Category}");
         }
     }
 }

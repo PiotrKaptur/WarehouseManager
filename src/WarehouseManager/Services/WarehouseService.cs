@@ -123,6 +123,20 @@ class WarehouseService
         Product? foundProduct = Products.FirstOrDefault(p => p.Price == maxPrice);
         return foundProduct;
         }
-        
+    }
+
+    public Product? GetProductWithHighestQuantity()
+    {
+        int quantityProducts = Products.Count;
+        if(quantityProducts == 0)
+        {
+            return null;
+        }
+        else
+        {
+            int maxQuantity = Products.Max(p => p.Quantity);
+            Product? foundProduct = Products.FirstOrDefault(p => p.Quantity == maxQuantity);
+            return foundProduct;
+        }
     }
 }
