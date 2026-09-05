@@ -102,6 +102,7 @@ class Project
         decimal result2 = warehouseService.GetTotalWarehouseValue();
         Console.WriteLine($"Get total warehouse value : {result2}");
 
+
         Console.WriteLine("Test TheMostExpensiveProduct");
         var result3 = warehouseService.TheMostExpensiveProduct();
         if(result3 == null)
@@ -113,6 +114,7 @@ class Project
             Console.WriteLine($"{result3.Id}. - {result3.Name} - {result3.Price} zł - ilość: {result3.Quantity} - kategoria: {result3.Category}");
         }
 
+
         Console.WriteLine("Test GetProductWithHighestQuantity");
         var result4 = warehouseService.GetProductWithHighestQuantity();
         if(result4 == null)
@@ -123,5 +125,9 @@ class Project
         {
             Console.WriteLine($"{result4.Id}. - {result4.Name} - {result4.Price} zł - ilość: {result4.Quantity} - kategoria: {result4.Category}");
         }
+
+
+        Console.WriteLine("Test GetProductCount");
+        Console.WriteLine($"Product count : {warehouseService.GetProductCount()}");
     }
 }

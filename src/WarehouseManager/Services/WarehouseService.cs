@@ -139,4 +139,9 @@ class WarehouseService
             return foundProduct;
         }
     }
+
+    public int GetProductCount()
+    {
+        return Products.Count;
+    }
 }
