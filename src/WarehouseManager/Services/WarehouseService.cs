@@ -98,4 +98,9 @@ class WarehouseService
     {
         return Products.OrderBy(p => p.Quantity).ToList();
     }
+
+    public int GetTotalQuantity()
+    {
+        return Products.Sum(p => p.Quantity);
+    }
 }

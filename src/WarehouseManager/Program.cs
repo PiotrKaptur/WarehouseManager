@@ -93,5 +93,10 @@ class Project
         Console.WriteLine("Test SortingByQuantity");
         List<Product> sortingByQuantity = warehouseService.SortingByQuantity();
         ProductDisplay(sortingByQuantity);
+
+
+        Console.WriteLine("Test GetTotalQuantity");
+        int result1 = warehouseService.GetTotalQuantity();
+        Console.WriteLine($"Get Total Quantity: {result1}");
     }
 }
