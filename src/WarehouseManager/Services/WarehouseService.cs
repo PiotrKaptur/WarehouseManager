@@ -158,4 +158,19 @@ class WarehouseService
             return false;
         }
     }
+
+
+    public bool IssueProduct(int id, int amount)
+    {
+        Product? product = Products.FirstOrDefault(p => p.Id == id);
+        if(product != null && product.Quantity >= amount)
+        {
+            product.Quantity -= amount;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

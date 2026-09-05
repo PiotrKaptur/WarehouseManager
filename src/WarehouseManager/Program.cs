@@ -136,5 +136,11 @@ class Project
         Console.WriteLine(effect4);
         ProductDisplay(warehouseService.Products);
 
+
+        Console.WriteLine("Test IssueProduct");
+        bool effect5 = warehouseService.IssueProduct(2, 50);
+        Console.WriteLine(effect5);
+        ProductDisplay(warehouseService.Products);  
+
     }
 }
