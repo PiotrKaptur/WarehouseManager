@@ -104,9 +104,25 @@ class WarehouseService
         return Products.Sum(p => p.Quantity);
     }
 
-
     public decimal GetTotalWarehouseValue()
     {
         return Products.Sum(p => p.Price * p.Quantity);
+    }
+
+    public Product? TheMostExpensiveProduct()
+    {
+        int quantityProducts = Products.Count;
+        
+        if( quantityProducts == 0)
+        {
+            return null;
+        }
+        else
+        {
+        decimal maxPrice = Products.Max(p => p.Price);
+        Product? foundProduct = Products.FirstOrDefault(p => p.Price == maxPrice);
+        return foundProduct;
+        }
+        
     }
 }

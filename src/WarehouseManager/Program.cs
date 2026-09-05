@@ -1,8 +1,6 @@
 ﻿
 class Project
 {
-
-
     public static void ProductDisplay(List<Product> products)
     {
         foreach(Product item in products)
@@ -103,5 +101,16 @@ class Project
         Console.WriteLine("Test GetTotalWarehouseValue");
         decimal result2 = warehouseService.GetTotalWarehouseValue();
         Console.WriteLine($"Get total warehouse value : {result2}");
+
+        Console.WriteLine("Test TheMostExpensiveProduct");
+        var result3 = warehouseService.TheMostExpensiveProduct();
+        if(result3 == null)
+        {
+            Console.WriteLine("No products");
+        }
+        else
+        {
+            Console.WriteLine($"{result3.Id}. - {result3.Name} - {result3.Price} zł - ilość: {result3.Quantity} - kategoria: {result3.Category}");
+        }
     }
 }
