@@ -129,5 +129,12 @@ class Project
 
         Console.WriteLine("Test GetProductCount");
         Console.WriteLine($"Product count : {warehouseService.GetProductCount()}");
+
+
+        Console.WriteLine("Test ReceiveProduct");
+        bool effect4 = warehouseService.ReceiveProduct(2, 10);
+        Console.WriteLine(effect4);
+        ProductDisplay(warehouseService.Products);
+
     }
 }

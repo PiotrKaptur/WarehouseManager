@@ -144,4 +144,18 @@ class WarehouseService
     {
         return Products.Count;
     }
+
+    public bool ReceiveProduct(int id, int amount)
+    {
+        Product? product =  Products.FirstOrDefault(p => p.Id == id);
+        if(product != null)
+        {
+            product.Quantity += amount;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
