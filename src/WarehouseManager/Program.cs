@@ -12,11 +12,20 @@ class Project
     {
         WarehouseService warehouseService = new WarehouseService();
         Product product = new Product(1, "Wkrętarka", 500, 34, ProductCategory.NarzędziaPomiaroweIKontrolne);
-        warehouseService.AddProduct(product);
-        Product product1 = new Product(2, "Wiertarka", 700, 2, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
-        warehouseService.AddProduct(product1);
-        Product product2 = new Product(3, "Odkurzacz", 650, 5, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
-        warehouseService.AddProduct(product2);
+        bool resultGoodProduct = warehouseService.AddProduct(product);
+        Console.WriteLine(resultGoodProduct);
+        Product product1 = new Product(1, "Wiertarka", 700, 2, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
+        resultGoodProduct = warehouseService.AddProduct(product1);
+        Console.WriteLine(resultGoodProduct);
+        Product product2 = new Product(3, "", 650, 5, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
+        resultGoodProduct = warehouseService.AddProduct(product2);
+        Console.WriteLine(resultGoodProduct);
+        Product product3 = new Product(4, "Odkurzacz", -650, 7, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
+        resultGoodProduct = warehouseService.AddProduct(product3);
+        Console.WriteLine(resultGoodProduct);
+        Product product4 = new Product(3, "Szlifierka", 450, -5, ProductCategory.NarzędziaElektryczneIAkumulatorowe);
+        resultGoodProduct = warehouseService.AddProduct(product4);
+        Console.WriteLine(resultGoodProduct);
 
         ProductDisplay(warehouseService.Products);
 

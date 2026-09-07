@@ -8,10 +8,20 @@ class WarehouseService
         Products = new List<Product>();
     }
 
-    public void AddProduct(Product product)
+    public bool AddProduct(Product product)
     {
-        Products.Add(product);
+        Product? product1 = Products.FirstOrDefault(p => p.Id == product.Id);
+        if(product1 != null || string.IsNullOrWhiteSpace(product.Name) || product.Price <=0 || product.Quantity < 0)
+        {
+            return false;
+        }
+        else
+        {
+            Products.Add(product);
+            return true;
+        }
     }
+    
 
     public Product? FindProductByName(string name)
     {
