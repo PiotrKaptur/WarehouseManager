@@ -49,7 +49,7 @@ class WarehouseService
             Console.WriteLine("Wartość musi być większa od 0");
             return false;
         }
-        Product? foundProduct = Products.FirstOrDefault(p => p.Id == id);
+        Product? foundProduct = FindProductById(id);
        
         if(foundProduct != null)
         {
@@ -70,7 +70,7 @@ class WarehouseService
             Console.WriteLine("Wartość musi być wieksza od 0");
             return false;
         }
-        Product? foundProduct = Products.FirstOrDefault(p => p.Id == id);
+        Product? foundProduct = FindProductById(id);
        
         if(foundProduct != null && foundProduct.Quantity >= amount)
         {
@@ -167,7 +167,11 @@ class WarehouseService
 
     public bool ReceiveProduct(int id, int amount)
     {
-        Product? product =  Products.FirstOrDefault(p => p.Id == id);
+        if(amount <= 0)
+        {
+            return false;
+        }
+        Product? product =  FindProductById(id);
         if(product != null)
         {
             product.Quantity += amount;
@@ -182,7 +186,11 @@ class WarehouseService
 
     public bool IssueProduct(int id, int amount)
     {
-        Product? product = Products.FirstOrDefault(p => p.Id == id);
+        if(amount <= 0)
+        {
+            return false;
+        }
+        Product? product = FindProductById(id);
         if(product != null && product.Quantity >= amount)
         {
             product.Quantity -= amount;
@@ -192,5 +200,10 @@ class WarehouseService
         {
             return false;
         }
+    }
+
+    public Product? FindProductById(int id)
+    {
+        return Products.FirstOrDefault(p => p.Id == id);
     }
 }
