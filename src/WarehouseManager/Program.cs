@@ -63,7 +63,19 @@ class Project
 
 
         Console.WriteLine("Test ReduceQuantity");
-        bool effect1 = warehouseService.ReduceQuantity(2, 1);
+        bool effect1 = warehouseService.ReduceQuantity(1, 1);
+        Console.WriteLine(effect1);
+        ProductDisplay(warehouseService.Products);
+
+        effect1 = warehouseService.ReduceQuantity(1, -10);
+        Console.WriteLine(effect1);
+        ProductDisplay(warehouseService.Products);
+
+        effect1 = warehouseService.ReduceQuantity(7, 15);
+        Console.WriteLine(effect1);
+        ProductDisplay(warehouseService.Products);
+
+        effect1 = warehouseService.ReduceQuantity(1, 115);
         Console.WriteLine(effect1);
         ProductDisplay(warehouseService.Products);
 

@@ -65,9 +65,14 @@ class WarehouseService
 
     public  bool ReduceQuantity(int id, int amount)
     {
+        if(amount <= 0)
+        {   
+            Console.WriteLine("Wartość musi być wieksza od 0");
+            return false;
+        }
         Product? foundProduct = Products.FirstOrDefault(p => p.Id == id);
        
-       if(foundProduct != null && foundProduct.Quantity >= amount)
+        if(foundProduct != null && foundProduct.Quantity >= amount)
         {
             foundProduct.Quantity = foundProduct.Quantity - amount;
             return true;
