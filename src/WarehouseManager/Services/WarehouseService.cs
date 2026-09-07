@@ -21,7 +21,7 @@ class WarehouseService
             return true;
         }
     }
-    
+
 
     public Product? FindProductByName(string name)
     {
@@ -44,9 +44,14 @@ class WarehouseService
     }
     public  bool IncreaseQuantity(int id, int amount)
     {
+        if(amount <= 0)
+        {
+            Console.WriteLine("Wartość musi być większa od 0");
+            return false;
+        }
         Product? foundProduct = Products.FirstOrDefault(p => p.Id == id);
        
-       if(foundProduct != null)
+        if(foundProduct != null)
         {
             foundProduct.Quantity = foundProduct.Quantity + amount;
             return true;

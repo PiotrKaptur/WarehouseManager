@@ -49,7 +49,15 @@ class Project
 
 
         Console.WriteLine("Test IncreaseQuantity");
-        bool effect = warehouseService.IncreaseQuantity(2, 10);
+        bool effect = warehouseService.IncreaseQuantity(1, 10);
+        Console.WriteLine(effect);
+        ProductDisplay(warehouseService.Products);
+
+        effect = warehouseService.IncreaseQuantity(2, -10);
+        Console.WriteLine(effect);
+        ProductDisplay(warehouseService.Products);
+
+        effect = warehouseService.IncreaseQuantity(7, 15);
         Console.WriteLine(effect);
         ProductDisplay(warehouseService.Products);
 
