@@ -11,6 +11,10 @@ class Project
     static void Main()
     {
         WarehouseService warehouseService = new WarehouseService();
+        ConsoleMenu consoleMenu = new ConsoleMenu(warehouseService);
+       
+        
+
         Product product = new Product(1, "Wkrętarka", 500, 34, ProductCategory.NarzędziaPomiaroweIKontrolne);
         bool resultGoodProduct = warehouseService.AddProduct(product);
         Console.WriteLine(resultGoodProduct);
@@ -27,6 +31,9 @@ class Project
         resultGoodProduct = warehouseService.AddProduct(product4);
         Console.WriteLine(resultGoodProduct);
 
+
+        consoleMenu.Menu();
+        
         ProductDisplay(warehouseService.Products);
 
 
