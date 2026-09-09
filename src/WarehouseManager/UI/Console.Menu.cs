@@ -115,7 +115,22 @@ class ConsoleMenu
                     }
                 case "3":
                     {
-                        Console.WriteLine("Wybrano przyjęcie towaru");
+                        Console.WriteLine("Przyjmowanie towaru");
+                        Project.ProductDisplay(_warehouseService.Products);
+                        Console.WriteLine("Podaj ID produktu");
+                        if(!int.TryParse(Console.ReadLine(), out int productId))
+                        {
+                            Console.WriteLine("Błędne dane");
+                            break;
+                        }
+                        Console.WriteLine("Podaj ilość przyjmowanego towaru");
+                        if(!int.TryParse(Console.ReadLine(), out int productQuantity))
+                        {
+                            Console.WriteLine("Błędne dane");
+                            break;
+                        }
+                        bool result = _warehouseService.ReceiveProduct(productId, productQuantity);
+                        Console.WriteLine(result? "Towar został dodany" : "Nie udało się dodać towaru");
                         break;
                     }
                 case "4":
