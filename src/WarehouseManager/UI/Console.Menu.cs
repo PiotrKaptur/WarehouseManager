@@ -1,3 +1,5 @@
+using System.Data;
+
 class ConsoleMenu
 {
     WarehouseService _warehouseService {get; set;}
@@ -135,7 +137,22 @@ class ConsoleMenu
                     }
                 case "4":
                     {
-                        Console.WriteLine("Wybrano wydanie towaru");
+                        Console.WriteLine("Wydanie towaru");
+                        Project.ProductDisplay(_warehouseService.Products);
+                        Console.WriteLine("Podaj ID produktu");
+                        if(!int.TryParse(Console.ReadLine(), out int productId))
+                        {
+                            Console.WriteLine("Błędne dane");
+                            break;
+                        }
+                        Console.WriteLine("Podaj ilość pobieranego produktu");
+                        if(!int.TryParse(Console.ReadLine(), out int productQuantity))
+                        {
+                            Console.WriteLine("Błędne dane");
+                            break;
+                        }
+                        bool result = _warehouseService.IssueProduct(productId, productQuantity);
+                        Console.WriteLine(result? "Towar został wydany" : "Nie udało się wydać towaru");
                         break;
                     }
                 case "0":
