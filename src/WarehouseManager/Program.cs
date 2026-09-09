@@ -33,7 +33,7 @@ class Project
 
 
         consoleMenu.Menu();
-        
+
         ProductDisplay(warehouseService.Products);
 
 
@@ -177,6 +177,5 @@ class Project
         bool effect5 = warehouseService.IssueProduct(2, 50);
         Console.WriteLine(effect5);
         ProductDisplay(warehouseService.Products);  
-
     }
 }

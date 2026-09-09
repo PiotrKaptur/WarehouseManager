@@ -109,6 +109,8 @@ class ConsoleMenu
                             break;
                         }
                         Product product = new Product(id, name, price, quantity, selectedCategory);
+                        bool result = _warehouseService.AddProduct(product);
+                        Console.WriteLine(result ? "Produkt został dodany" : "Nie udało się dodać produktu");
                         break;
                     }
                 case "3":
