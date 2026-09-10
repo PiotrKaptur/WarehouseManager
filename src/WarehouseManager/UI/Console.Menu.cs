@@ -1,4 +1,5 @@
 using System.Data;
+using System.Data.Common;
 
 class ConsoleMenu
 {
@@ -17,6 +18,7 @@ class ConsoleMenu
             Console.WriteLine("2. DODAJ PRODUKT");
             Console.WriteLine("3. PRZYJMIJ TOWAR");
             Console.WriteLine("4. WYDAJ TOWAR");
+            Console.WriteLine("5. WYSZUKAJ PRODUKT");
             Console.WriteLine("0. ZAKOŃCZ PROGRAM");
 
             choice = Console.ReadLine();
@@ -153,6 +155,27 @@ class ConsoleMenu
                         }
                         bool result = _warehouseService.IssueProduct(productId, productQuantity);
                         Console.WriteLine(result? "Towar został wydany" : "Nie udało się wydać towaru");
+                        break;
+                    }
+                case "5":
+                    {
+                        Console.WriteLine("WYSZUKAJ PRODUKT");
+                        Console.WriteLine("Podaj nazwę produktu:");
+                        string? name = Console.ReadLine();
+                        if(string.IsNullOrWhiteSpace(name))
+                        {
+                            Console.WriteLine("Nieprawidłowa nazwa produktu");
+                            break;
+                        }
+                        Product? product = _warehouseService.FindProductByName(name);
+                        if(product == null)
+                        {
+                          Console.WriteLine("Nie znaleziono produktu");  
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{product.Id}. - {product.Name} - {product.Price} zł - ilość: {product.Quantity} - kategoria: {product.Category}");
+                        }
                         break;
                     }
                 case "0":
