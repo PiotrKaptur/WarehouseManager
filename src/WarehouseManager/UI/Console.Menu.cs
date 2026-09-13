@@ -1,5 +1,6 @@
 using System.Data;
 using System.Data.Common;
+using System.IO.Pipelines;
 
 class ConsoleMenu
 {
@@ -19,6 +20,7 @@ class ConsoleMenu
             Console.WriteLine("3. PRZYJMIJ TOWAR");
             Console.WriteLine("4. WYDAJ TOWAR");
             Console.WriteLine("5. WYSZUKAJ PRODUKT");
+            Console.WriteLine("6. USUŃ PRODUKT");
             Console.WriteLine("0. ZAKOŃCZ PROGRAM");
 
             choice = Console.ReadLine();
@@ -176,6 +178,21 @@ class ConsoleMenu
                         {
                             Console.WriteLine($"{product.Id}. - {product.Name} - {product.Price} zł - ilość: {product.Quantity} - kategoria: {product.Category}");
                         }
+                        break;
+                    }
+                case "6":
+                    {
+                        Console.WriteLine("Usuwanie produktu");
+                        Project.ProductDisplay(_warehouseService.Products);
+                        Console.WriteLine("Podaj nazwę produktu do usunięcia");
+                        string? name = Console.ReadLine();
+                        if(string.IsNullOrWhiteSpace(name))
+                        {
+                            Console.WriteLine("Nieprawidłowa nazwa produktu");
+                            break;
+                        }
+                        bool result = _warehouseService.RemoveProduct(name);
+                        Console.WriteLine(result? "Produkt został usunięty" : "Nie udało się usunąć produktu");
                         break;
                     }
                 case "0":
