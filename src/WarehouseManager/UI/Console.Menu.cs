@@ -21,6 +21,7 @@ class ConsoleMenu
             Console.WriteLine("4. WYDAJ TOWAR");
             Console.WriteLine("5. WYSZUKAJ PRODUKT");
             Console.WriteLine("6. USUŃ PRODUKT");
+            Console.WriteLine("7. FILTRUJ PO KATEGORII");
             Console.WriteLine("0. ZAKOŃCZ PROGRAM");
 
             choice = Console.ReadLine();
@@ -193,6 +194,55 @@ class ConsoleMenu
                         }
                         bool result = _warehouseService.RemoveProduct(name);
                         Console.WriteLine(result? "Produkt został usunięty" : "Nie udało się usunąć produktu");
+                        break;
+                    }
+                case "7":
+                    {
+                        ProductCategory selectedCategory = ProductCategory.NarzędziaRęczne;
+                        Console.WriteLine("Filtrowanie po kategorii");
+                        Console.WriteLine("1. Narzędzia ręczne");
+                        Console.WriteLine("2. Narzędzia elektryczne i akumulatorowe");
+                        Console.WriteLine("3. Narzędzia pomiarowe i kontrolne");
+                        Console.WriteLine("4. Wyposarzenie pomocnicze i organizacja");
+                        Console.WriteLine("Podaj numer kategorii");
+                        List<Product> products;
+                        if(int.TryParse(Console.ReadLine(), out int selection))
+                        {
+                            if(selection <=0 || selection > 4)
+                            {
+                                Console.WriteLine("Niepoprawny wybór");
+                                break;
+                            }
+                            switch(selection)
+                            {
+                                case 1:
+                                    {
+                                        selectedCategory = ProductCategory.NarzędziaRęczne;
+                                        break;
+                                    }
+                                case 2:
+                                    {
+                                        selectedCategory = ProductCategory.NarzędziaElektryczneIAkumulatorowe;
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        selectedCategory = ProductCategory.NarzędziaPomiaroweIKontrolne;
+                                        break;
+                                    }
+                                case 4:
+                                    {
+                                        selectedCategory = ProductCategory.WyposażeniePomocniczeIOrganizacja;
+                                        break;
+                                    }
+                            }
+                            products = _warehouseService.SearchByCategory(selectedCategory);
+                            Project.ProductDisplay(products);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Niepoprawny wybór");
+                        }
                         break;
                     }
                 case "0":
